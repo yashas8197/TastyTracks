@@ -1,0 +1,1 @@
+export const LOGO_URL = "https://img.freepik.com/free-vector/doodle-delivery-services-logo_23-2149153610.jpg"
