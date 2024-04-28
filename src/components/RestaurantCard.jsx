@@ -1,3 +1,5 @@
+import { CDN_URL } from "../utils/constants";
+
 const RestaurantCard = ({ resData }) => {
     const {
       cloudinaryImageId,
@@ -13,14 +15,14 @@ const RestaurantCard = ({ resData }) => {
       objectFit: "cover",
     };
 
-    return (
-      <div className="col-md-3 my-3">
-        <div className="card shadow" style={{ width: "15rem" }}>
+  return (
+      <div>
+        <div className="card shadow  hover:bg-gray-100" style={{ width: "15rem" }}>
           <img
             style={imageStyle}
             className="card-img-top img-fluid"
             src={
-              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+              CDN_URL +
               cloudinaryImageId
             }
             alt="restaurantImg"
