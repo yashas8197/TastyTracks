@@ -12,7 +12,6 @@ const Body = () => {
   const [pureVeg, setPureVeg] = useState(false);
   const [showCostBtn, setShowCostBtn] = useState(false);
 
-  console.log(filteredRestuarant)
 
   useEffect(()=> {
     fetchData()

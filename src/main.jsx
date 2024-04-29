@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {lazy, Suspense} from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
-import About from "./pages/About.jsx"
 import Contact from "./pages/Contact.jsx"
 import Body from './components/Body.jsx'
 import Error from './components/Error.jsx'
 import RestaurantMenu from "./pages/RestaurantMenu.jsx"
+import Shimmer from './components/Shimmer.jsx'
+
+const About = lazy(() => import("./pages/About.jsx"))
 
 
 const router = createBrowserRouter([
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
       }
       ,{
         path: "/about",
-        element: <About/>
+        element: <Suspense fallback={<Shimmer/>}><About/></Suspense>,
       },
       {
         path: "/contact",
