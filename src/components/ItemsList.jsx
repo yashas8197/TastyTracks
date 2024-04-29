@@ -3,7 +3,6 @@ import nonVeg from "../assets/non-veg.png"
 import { CDN_URL } from "../utils/constants"
 
 const ItemsList = ({items}) => {
-    console.log(items)  
     return (
         <>
             <div className="accordion-body">
