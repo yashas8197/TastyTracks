@@ -2,23 +2,12 @@ import { useEffect, useState } from "react";
 import Shimmer from "../components/Shimmer"
 import { Link } from "react-router-dom";
 import { Code2Icon, Github, MapPin, CircleUser } from "lucide-react";
+import useAboutDetails from "../utils/useAboutDetails";
 
 const About = () => {
-    const [githubProfile, setGithubProfile] = useState(null)
-
-    useEffect(() => {
-        fetchData()
-    },[])
-
+    let githubProfile = null;
     
-
-    const fetchData = async () => {
-        const data = await fetch("https://api.github.com/users/yashas8197");
-         const json = await data.json();
-         setGithubProfile(json)
-    }
-
-    console.log(githubProfile)
+    githubProfile = useAboutDetails()
     if(githubProfile === null){
         return <Shimmer/>
     }
