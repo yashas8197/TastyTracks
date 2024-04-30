@@ -2,9 +2,10 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
-  const [restaurantsList, setRestaurantsList] = useState([]);
+  const [restaurantsList,setRestaurantsList] = useState(null)
   const [filteredRestuarant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [showRemoveTopResBtn, setShowRemoveTopResBtn] = useState(false);
@@ -13,18 +14,21 @@ const Body = () => {
   const [showCostBtn, setShowCostBtn] = useState(false);
 
 
-  useEffect(()=> {
-    fetchData()
-  },[])
+  const resInfo = useRestaurantList()
+  
+  useEffect(() => {
+    if (resInfo) {
+      setRestaurantsList(resInfo);
+    }
+  }, [resInfo]);
+
+  useEffect(() => {
+    if (restaurantsList) {
+      setFilteredRestaurant(restaurantsList.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+    }
+  }, [restaurantsList]);
   
 
-  const fetchData = async () => {
-    const data = await fetch("https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-
-    const json = await data.json();
-    setRestaurantsList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  }
 
   const onChangeSearch = (e) => {
     const { value } = e.target;
