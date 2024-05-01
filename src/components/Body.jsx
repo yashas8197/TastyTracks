@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../utils/useRestaurantList";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [restaurantsList,setRestaurantsList] = useState(null)
@@ -15,6 +16,7 @@ const Body = () => {
 
 
   const resInfo = useRestaurantList()
+  
   
   useEffect(() => {
     if (resInfo) {
@@ -93,6 +95,15 @@ const Body = () => {
     setShowCostBtn(false)
   }
 
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false){
+    return (
+      <div className="my-4">
+        <h1 className="text-center">Looks like you're offline!! Please check your internet connection</h1>
+      </div>
+  )
+  }
 
   return filteredRestuarant.length === 0 ? <Shimmer/> : (
     <div className="container my-4">

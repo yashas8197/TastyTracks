@@ -28,10 +28,10 @@ const RestaurantCard = ({ resData }) => {
             alt="restaurantImg"
           />
           <div className="card-body">
-            <p className="card-text">
+            <p className="card-text my-2">
               <strong>{name}</strong></p>
-              <p>{avgRating}</p>
-              <p>{cuisines.join(", ")}</p>
+              <p className="text-secondary my-2">{cuisines.join(", ")}</p>
+              <p>⭐{avgRating}</p>
               <p>{costForTwo}</p>
             
           </div>

@@ -4,7 +4,6 @@ import MenuHeader from "../components/MenuHeader"
 import RestaurantCategory from "../components/RestaurantCategory"
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants";
 
 const RestaurantMenu = () => {
 
@@ -24,6 +23,7 @@ const RestaurantMenu = () => {
     return resInfo === null ? <Shimmer/> : (
         <div>
          <MenuHeader info={info}/>
+         <h2 className="display-6 text-center my-4">ಮenu</h2>
          {
             categories.map((category, index) => <RestaurantCategory key={category.card?.card?.title} data={category.card?.card} showItems={index === showIndex ? true : false} setShowIndex={() => setShowIndex(index)}/>)
          }

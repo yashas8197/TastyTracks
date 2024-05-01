@@ -1,5 +1,4 @@
 import ItemsList from "./ItemsList";
-import { useState } from "react";
 
 const RestaurantCategory = ({data, showItems, setShowIndex}) => {
 
@@ -12,7 +11,7 @@ const RestaurantCategory = ({data, showItems, setShowIndex}) => {
           <div className="accordion" id="accordionExample">
               <div className="accordion-item">
                   <h2 className="accordion-header">
-                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={handleClick}>
+                    <button className="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={handleClick}>
                       <strong>{data.title} ({data.itemCards.length})</strong>
                     </button>
                   </h2>
