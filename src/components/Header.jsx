@@ -15,10 +15,7 @@ const Header = () => {
     <header className="navbar-light bg-light shadow">
       <nav className="navbar navbar-expand-lg  container">
         <div className="container-fluid">
-          <img
-            src={LOGO_URL}
-            style={{ height: "100px" }}
-          />
+          <img src={LOGO_URL} style={{ height: "100px" }} />
           <button
             className="navbar-toggler"
             type="button"
