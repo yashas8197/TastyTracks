@@ -1,0 +1,9 @@
+.item-container {
+  position: relative;
+}
+
+.btnAddBtn {
+  position: absolute;
+  bottom: 18px;
+  right: 40px;
+}

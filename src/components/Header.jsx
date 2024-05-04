@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
+import { ShoppingCart } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [logout, setLogout] = useState(false);
@@ -11,6 +13,9 @@ const Header = () => {
   const loginHandler = () => {
     setLogout(false);
   };
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   return (
     <header className="navbar-light bg-light shadow">
       <nav className="navbar navbar-expand-lg  container">
@@ -47,7 +52,7 @@ const Header = () => {
 
               <li className="nav-item">
                 <NavLink className="nav-link" to="/cart">
-                  Cart
+                  <ShoppingCart /> Cart ({cartItems.length} Items)
                 </NavLink>
               </li>
               {!logout ? (

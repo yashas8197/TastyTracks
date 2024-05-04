@@ -1,3 +1,5 @@
+import { Clock1 } from "lucide-react";
+
 const RatingDiv = ({ info }) => {
   return (
     <div className="menu-rating d-flex align-items-center">
@@ -48,8 +50,8 @@ const MenuHeader = ({ info }) => {
             <hr />
             <div className="d-flex justify-content-between align-items-center px-3">
               <div className="mb-3">
-                <span role="img" aria-label="Clock">
-                  🕛
+                <span>
+                  <Clock1 />
                 </span>
                 <span className="ml-1">
                   <strong>{info.sla?.slaString}</strong>

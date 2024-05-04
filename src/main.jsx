@@ -6,7 +6,10 @@ import Contact from "./pages/Contact.jsx";
 import Body from "./components/Body.jsx";
 import Error from "./components/Error.jsx";
 import RestaurantMenu from "./pages/RestaurantMenu.jsx";
+import Cart from "./pages/Cart.jsx";
 import Shimmer from "./components/Shimmer.jsx";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 
 const About = lazy(() => import("./pages/About.jsx"));
 
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
       },
@@ -41,7 +48,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <Provider store={appStore}>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </Provider>
 );

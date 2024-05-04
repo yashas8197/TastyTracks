@@ -1,13 +1,22 @@
 import veg from "../assets/veg.png";
 import nonVeg from "../assets/non-veg.png";
 import { CDN_URL } from "../utils/constants";
+import "../App.css";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const ItemsList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <>
       <div className="accordion-body">
         {items.map((item) => (
-          <div key={item.card.info.name}>
+          <div key={item.card.info.name} className="item-container">
             <div className="d-flex justify-content-between py-3">
               <div className="w-75">
                 <img
@@ -20,6 +29,7 @@ const ItemsList = ({ items }) => {
                   {item.card.info.description}
                 </small>
               </div>
+
               <div>
                 <img
                   src={
@@ -27,9 +37,15 @@ const ItemsList = ({ items }) => {
                       ? CDN_URL + item?.card?.info?.imageId
                       : ""
                   }
-                  className="img-fluid"
-                  style={{ width: "150px" }}
+                  className="img-fluid image-container"
+                  style={{ width: "150px", height: "150px" }}
                 />
+                <button
+                  className="btn btn-dark btnAddBtn"
+                  onClick={() => handleAddItem(item)}
+                >
+                  Add +
+                </button>
               </div>
             </div>
             <hr />
