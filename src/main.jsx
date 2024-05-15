@@ -10,6 +10,7 @@ import Cart from "./pages/Cart.jsx";
 import Shimmer from "./components/Shimmer.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
+import SearchPage from "./pages/SearchPage.jsx";
 
 const About = lazy(() => import("./pages/About.jsx"));
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       },
       {
         path: "/about",
