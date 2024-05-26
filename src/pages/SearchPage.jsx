@@ -40,8 +40,6 @@ const SearchPage = () => {
     );
   };
 
-  console.log(suggestions);
-
   return (
     <div className="container my-5 d-flex flex-column ">
       <div className="container-fluid">

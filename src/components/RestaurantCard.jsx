@@ -26,7 +26,11 @@ const RestaurantCard = ({ resData }) => {
           <p className="card-text my-2">
             <strong>{name}</strong>
           </p>
-          <p className="text-secondary my-2">{cuisines.join(", ")}</p>
+          <p className="text-secondary my-2">
+            {cuisines.length > 3
+              ? cuisines.slice(0, 3).join(", ") + "..."
+              : cuisines.join(", ")}
+          </p>
           <p>⭐{avgRating}</p>
           <p>{costForTwo}</p>
         </div>

@@ -6,7 +6,7 @@ import useRestaurantList from "../utils/useRestaurantList";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [restaurantsList, setRestaurantsList] = useState(null);
+  const [restaurantsList, setRestaurantsList] = useState([]);
   const [filteredRestuarant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [showRemoveTopResBtn, setShowRemoveTopResBtn] = useState(false);
@@ -16,6 +16,7 @@ const Body = () => {
   const [showCostBtn, setShowCostBtn] = useState(false);
 
   const resInfo = useRestaurantList();
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     if (resInfo) {
@@ -24,7 +25,7 @@ const Body = () => {
   }, [resInfo]);
 
   useEffect(() => {
-    if (restaurantsList) {
+    if (restaurantsList?.data?.cards) {
       setFilteredRestaurant(
         restaurantsList.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || []
@@ -94,8 +95,6 @@ const Body = () => {
     setFilteredRestaurant(restaurantsList);
     setShowCostBtn(false);
   };
-
-  const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) {
     return (
